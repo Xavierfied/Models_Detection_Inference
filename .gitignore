@@ -1,0 +1,9 @@
+.venv/
+results/
+samples/
+weights/
+__pycache__/
+.idea
+---
+.mp4
+.jpg, .jpeg

@@ -1,0 +1,7 @@
+tensorflow==2.12.0
+retina-face==0.0.17
+opencv-python==4.11.0.86
+mediapipe==0.10.9
+pillow==12.2.0
+numpy==1.23.5
+controlnet_aux==0.0.10
