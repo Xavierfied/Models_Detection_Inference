@@ -5,3 +5,4 @@ mediapipe==0.10.9
 pillow==12.2.0
 numpy==1.23.5
 controlnet_aux==0.0.10
+ultralytics==8.4.37

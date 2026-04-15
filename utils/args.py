@@ -11,7 +11,7 @@ def get_args():
     parser.add_argument("--model", 
                         type=str, 
                         required=True, 
-                        choices=["mp", "rf", "cn_op"], 
+                        choices=["mp", "rf", "cn_op", "yv8pose"], 
                         help="Inference backend")
     
     parser.add_argument("--save", 

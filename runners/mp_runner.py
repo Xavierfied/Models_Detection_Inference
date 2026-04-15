@@ -37,7 +37,7 @@ class MPRunner:
                     h, w, _ = frame.shape
                     cx, cy = int(lm.x * w), int(lm.y * h)
                     cv.circle(frame, (cx, cy), 3, (0, 255, 0), -1)
-#########################################################
+
         # Draw Face
         if face_res.face_landmarks:
             for landmarks in face_res.face_landmarks:
@@ -46,3 +46,4 @@ class MPRunner:
                     cx, cy = int(lm.x * w), int(lm.y * h)
                     cv.circle(frame, (cx, cy), 1, (255, 0, 0), -1)
         return frame
+#########################################################

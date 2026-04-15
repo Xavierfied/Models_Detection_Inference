@@ -49,5 +49,8 @@ def create_runner(model: str):
     elif model == "cn_op":
         from runners.cn_op_runner import CNOPRunner
         return CNOPRunner()
+    elif model == "yv8pose":
+        from runners.yv8pose_runner import YV8PoseRunner
+        return YV8PoseRunner()
     else:
         raise ValueError(f"Unknown model: {model!r}")

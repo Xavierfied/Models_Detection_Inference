@@ -30,7 +30,10 @@ python main.py --model cn_op --save  --source "samples/band.mp4"
 python main.py --model rf --save  --source "samples/band.mp4"
 
 # MediaPipe
-python main.py --model mp --save  --source 0
+python main.py --model mp --view  --source 0
+
+# MediaPipe
+python main.py --model yv8pose --view  --source 0
 
 ```
 
@@ -56,7 +59,8 @@ utils/
 runners/
    cn_op_runner.py      - ControlNet Open-pose
    mp_runner.py         - Media pipe
-   rf_runner.py         - rf_runner.py
+   rf_runner.py         - Retina Face
+   yv8pose_runner.py    - Yolov8 Pose Estimation
 weights/
   face_landmarker.task
   pose_landmarker_full.task
@@ -72,3 +76,12 @@ https://drive.google.com/drive/folders/1j1qoZIK7e7ecVOeXEGK5yrAQcIDEilf5?usp=sha
 ```
 
 
+## Update Logs:
+
+- **15/04/2026:**
+```
+      - Added Yolov8 Pose detection
+      - Identifies if the person is sitting or standing via following criterion:
+            - Aspect Ratio, Standing person would have a ratio of 2:1 as compared to 1.2:1 for sitting
+            - Hips and Knees placement, checking the horizontal and vertical travel between the two kpts
+```
