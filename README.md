@@ -4,10 +4,10 @@ A unified Inference Comparison system focused on MediaPipe and ControlNet open-p
 
 ## Features
 
-- **Face** — face landmark detection via MediaPipe Face Landmarker
-- **Hands** — hand landmark detection via MediaPipe
-- **Pose** — pose landmark detection via MediaPipe
-- **RetinaFace** — face detection and landmarks via RetinaFace
+- **mp_runner**      — face & pose landmark detection via MediaPipe Landmarker. Best for single person detection and live\recorded feed.
+- **cn_op_runner**   — face & pose landmark detection via ControlNet's OpenPose detector. Best for crowd detection and recorded feed.
+- **rf_runner**      — Robust Face Detection and landmark matching via RetinaFace. Best for huge crowds and recorded feed due to power hungry.
+- **yv8pose_runner** — Pose Detection and Identifies if the person is sitting or standing.
 - Supports images, video files, and webcam input
 - Results saved to `results/` as `{filename}_{detector}.{ext}`
 
