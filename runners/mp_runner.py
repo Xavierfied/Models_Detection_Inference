@@ -1,6 +1,7 @@
 import cv2 as cv
 import mediapipe as mp
 
+
 class MPRunner:
     def __init__(self, pose_weights, face_weights):
         # Initialize Landmarkers
@@ -33,8 +34,9 @@ class MPRunner:
         # Draw Pose
         if pose_res.pose_landmarks:
             for landmarks in pose_res.pose_landmarks:
+                h, w, _ = frame.shape
                 for lm in landmarks:
-                    h, w, _ = frame.shape
+
                     cx, cy = int(lm.x * w), int(lm.y * h)
                     cv.circle(frame, (cx, cy), 3, (0, 255, 0), -1)
 
