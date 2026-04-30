@@ -17,17 +17,18 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
+from model_training.config import (
+    BATCH,
+    DATA_DIR,
+    DEVICE,
+    EPOCHS,
+    LR,
+    POSE_DETECTION_CONFIDENCE,
+    POSE_TRACKING_CONFIDENCE,
+    SAVE_PATH,
+    SEQ_LEN,
+)
 from runners_helpers.lstm_classifier import ACTIVITY_CLASSES, ActivityLSTM
-
-# ─── Config ───────────────────────────────────────────────────────────────────
-DATA_DIR  = Path('training_data')
-SAVE_PATH = Path('weights/activity_lstm.pt')
-SEQ_LEN   = 30
-EPOCHS    = 30
-BATCH     = 32
-LR        = 1e-3
-DEVICE    = 'cuda' if torch.cuda.is_available() else 'cpu'
-# ──────────────────────────────────────────────────────────────────────────────
 
 
 def extract_sequences(label: str) -> list[list]:
@@ -44,8 +45,8 @@ def extract_sequences(label: str) -> list[list]:
         cap = cv2.VideoCapture(str(vid))
         buffer = []
 
-        with mp_pose.Pose(min_detection_confidence=0.5,
-                          min_tracking_confidence=0.5) as pose:
+        with mp_pose.Pose(min_detection_confidence=POSE_DETECTION_CONFIDENCE,
+                  min_tracking_confidence=POSE_TRACKING_CONFIDENCE) as pose:
             while True:
                 ret, frame = cap.read()
                 if not ret:

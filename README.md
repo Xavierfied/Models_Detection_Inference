@@ -52,7 +52,7 @@ python main_lstm.py --source "samples/squat.mp4" --runner yv8 --save
 # Custom YOLOv8 weights
 python main_lstm.py --source 0 --runner yv8 --weights weights/yolov8s-pose.pt
 ```
-
+---
 ### LSTM Training (`model_training/lstm.py`)
 
 ```bash
@@ -60,11 +60,21 @@ python main_lstm.py --source 0 --runner yv8 --weights weights/yolov8s-pose.pt
 python model_training/lstm.py
 ```
 
+Training settings like sequence length, batch size, learning rate, epochs, and pose confidence values are in `model_training/config.py`.
+
 ### Data Collection (`model_training/collect_data.py`)
 
 ```bash
 # Extract landmark sequences from labelled videos and save .npy files
 python model_training/collect_data.py
+```
+
+### Training Dataset
+
+You can Download the Dataset Used in the following link, Just download the zip file and keep it in "training_data" with given structure intact:
+
+```
+https://drive.google.com/drive/folders/1tJ123-zl4xYaU0Yg6IOQu-8czJa7dytD?usp=sharing
 ```
 
 ## Parameters
@@ -90,6 +100,8 @@ python model_training/collect_data.py
  `--save`     `None`                     Save output to results/
 ```
 
+
+
 ## Project Structure
 
 ```
@@ -108,6 +120,7 @@ runners_helpers/
    form_check.py                 - Squat & deadlift form checks + feedback drawing
    lstm_classifier.py            - ActivityLSTM model + rule-based fallback classifier
 model_training/
+   config.py                     - LSTM training settings
    lstm.py                       - Train ActivityLSTM from labelled videos
    collect_data.py               - Extract landmark sequences to .npy files
 weights/
@@ -143,22 +156,3 @@ Trained LSTM weights are saved to `weights/activity_lstm.pt` after running `mode
 
 ---
 
-## Update Logs:
-
-- **15/04/2026:**
-```
-      - Added Yolov8 Pose detection
-      - Identifies if the person is sitting or standing via following criterion:
-            - Aspect Ratio, Standing person would have a ratio of 2:1 as compared to 1.2:1 for sitting
-            - Hips and Knees placement, checking the horizontal and vertical travel between the two kpts
-```
-
-- **29/04/2026:**
-```
-      - Renamed main_LiftOptimize.py to main_lstm.py
-      - Added 3 new activity classes to LSTM classifier: bicep curl, pushup, pullup
-      - ActivityLSTM now derives num_classes from ACTIVITY_CLASSES automatically
-        so adding new classes no longer requires touching the model definition
-      - Fixed load_classifier default device (was cuda:2, now cpu)
-      - Training data folders added: bicep/, pushup/, pullup/
-```
