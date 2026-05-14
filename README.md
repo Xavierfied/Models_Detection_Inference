@@ -2,6 +2,9 @@
 
 A unified Inference Comparison system focused on MediaPipe and ControlNet open-pose landmark models, with RetinaFace face detection.
 
+## Demo
+[![Demo](https://img.youtube.com/vi/5EWlFHQ1aj0/maxresdefault.jpg)](https://youtu.be/5EWlFHQ1aj0)
+
 ## Features
 
 - **Face** — face landmark detection via MediaPipe Face Landmarker
